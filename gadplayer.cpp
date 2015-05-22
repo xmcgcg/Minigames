@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "gadplayer.h"
 #include <iostream>
 #include <string>
