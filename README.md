@@ -1,3 +1,11 @@
+Ver1.0.150522: First version of G-A-D
+
+Known Problems and Possible Improvements:
+------------------------------------------------------------------------------------------------------------
+Computer may choose to ignore the ATTACK option when the amount of energy is 0.
+
+Basic Game Rule:
+------------------------------------------------------------------------------------------------------------
 Gather-Attack-Defend is a simple minigame for 2 players.
 
 Each player has 3 choices for each round: GATHER, ATTACK and DEFEND.
