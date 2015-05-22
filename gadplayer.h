@@ -13,7 +13,7 @@ private:
 	bool alive;                         //check whether the player is alive
 	stat status;                        //player's choice
 public:
-	Player(string str="null");          //constructor
+	Player(string str="null");          //constructor(initialize player's energy to 0)
 	void Reset();                       //reset the player to the initial status after each game
 	string Getname();                   //get the player's name
 	bool Check();                       //check and display whether the player is still alive
