@@ -110,20 +110,20 @@ bool Chess::JS_DoNotMeet(SC x, SC y, vector<Chess*> ar)  //check whether 帅 and
 	return true;                                     //this return statement is just for WARNINGS not to appear
 }
 
-void Chess::displayMove(SC x, SC y)                  //display and execute move if it is valid
+void Chess::displayMove(SC x, SC y)                  //display and execute movement if it is valid
 {
 	Xcoord = x;                                  //change the X-coordinate to parameter x
 	Ycoord = y;                                  //change the Y-coordinate to parameter y
 	y = toupper(y);                              //change y to upper case
 	cout << name << " has moved to coordinate ";
-	cout << y << x << "." << endl << endl;       //display the move information
+	cout << y << x << "." << endl << endl;       //display the movement information
 }
 
-void Chess::displayAttack(Chess& ch)                     //display and execute attack if it is valid
+void Chess::displayAttack(Chess& ch)                     //display and execute attacking if it is valid
 {
 	Xcoord = ch.Xcoord;                              //change the X-coordinate to enemy chess's X-coordinate
 	Ycoord = ch.Ycoord;                              //change the Y-coordinate to enemy chess's Y-coordinate
 	SC tempY = toupper(Ycoord);                      //create a local variable in Y-coordinate's upper case form
 	cout << name << " has moved to coordinate " << tempY << ch.Xcoord;
-	cout << " and eats " << ch.name << endl << endl; //display the attack information
+	cout << " and eats " << ch.name << endl << endl; //display the attacking information
 }
