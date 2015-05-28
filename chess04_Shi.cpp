@@ -2,7 +2,7 @@
 
 Shi::Shi(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Shi::move(SC x, SC y, vector<Chess*> ar) //return TRUE if the movement is valid, otherwise return FALSE
+bool Shi::move(SC x, SC y, vector<Chess*> ar) //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {
 	switch (Ycoord)
 	{
