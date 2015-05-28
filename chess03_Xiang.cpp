@@ -10,8 +10,8 @@ bool Xiang::move(SC x, SC y, vector<Chess*> ar) //return TRUE if the movement is
 		return false;                   //if it tries to cross the river, return FALSE
 	if (Ycoord == 'f' && y < 'f')           //same as above
 		return false;
-	int Xdif = abs(x - Xcoord);             //Xdif represents the number of rows to the destination
-	int Ydif = abs(y - Ycoord);             //Ydif represents the number of columns to the destination
+	int Xdif = abs(x - Xcoord);             //Xdif represents the number of columns to the destination
+	int Ydif = abs(y - Ycoord);             //Ydif represents the number of rows to the destination
 	if (Xdif == 2 && Ydif == 2)             //if both Xdif and Ydif are 2
 	{
 		if (x - Xcoord == 2)
