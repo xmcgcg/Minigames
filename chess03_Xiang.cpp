@@ -4,7 +4,7 @@ using std::abs;
 
 Xiang::Xiang(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Xiang::move(SC x, SC y, vector<Chess*> ar) //return TRUE if the movement is valid, otherwise return FALSE
+bool Xiang::move(SC x, SC y, vector<Chess*> ar) //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {
 	if (Ycoord == 'e' && y > 'e')           //相/象 cannot cross the river
 		return false;                   //if it tries to cross the river, return FALSE
