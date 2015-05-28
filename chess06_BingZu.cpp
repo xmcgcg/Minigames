@@ -4,7 +4,7 @@ using std::abs;
 
 BingZu::BingZu(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool BingZu::move(SC x, SC y, vector<Chess*> ar)   //return TRUE if the movement is valid, otherwise return FALSE
+bool BingZu::move(SC x, SC y, vector<Chess*> ar)   //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {
 	color down;                                //down represents the color of the chess from the bottom side
 	for (auto ch : ar)
