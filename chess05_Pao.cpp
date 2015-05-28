@@ -2,7 +2,7 @@
 
 Pao::Pao(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Pao::move(SC x, SC y, vector<Chess*> ar)            //return TRUE is the movement is valid, otherwise return FALSE
+bool Pao::move(SC x, SC y, vector<Chess*> ar)            //return TRUE is moving to (x,y) is valid, otherwise return FALSE
 {                                                        //炮/砲's moving method is the same as 车's
 	if (x != Xcoord && y != Ycoord)
 		return false;
