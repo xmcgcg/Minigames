@@ -4,7 +4,7 @@ using std::abs;
 
 Ma::Ma(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Ma::move(SC x, SC y, vector<Chess*> ar) //return TRUE if the movement is valid, otherwise return FALSE
+bool Ma::move(SC x, SC y, vector<Chess*> ar) //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {
 	int Xdif = abs(x - Xcoord); //Xdif represents the number of columns to the destination
 	int Ydif = abs(y - Ycoord); //Ydif represents the number of rows to the destination
