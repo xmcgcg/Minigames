@@ -2,7 +2,7 @@
 
 Ju::Ju(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Ju::move(SC x, SC y, vector<Chess*> ar)              //return TRUE is the movement is valid, otherwise return FALSE
+bool Ju::move(SC x, SC y, vector<Chess*> ar)              //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {
 	if (x != Xcoord && y != Ycoord)                   //车 has to move horizontally or vertically
 		return false;
