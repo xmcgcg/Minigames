@@ -6,8 +6,8 @@ Ma::Ma(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Che
 
 bool Ma::move(SC x, SC y, vector<Chess*> ar) //return TRUE if the movement is valid, otherwise return FALSE
 {
-	int Xdif = abs(x - Xcoord); //Xdif represents the number of rows to the destination
-	int Ydif = abs(y - Ycoord); //Ydif represents the number of columns to the destination
+	int Xdif = abs(x - Xcoord); //Xdif represents the number of columns to the destination
+	int Ydif = abs(y - Ycoord); //Ydif represents the number of rows to the destination
 	if ((Xdif == 2 && Ydif == 1) || (Xdif == 1 && Ydif == 2)) //if one of the two variables is 1 and the other is 2
 	{
 		if ((x - Xcoord) == 2)                       //if 马 wants to move to the right
