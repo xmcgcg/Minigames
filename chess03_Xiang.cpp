@@ -2,7 +2,7 @@
 #include <cstdlib>
 using std::abs;
 
-Xiang::Xiang(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} use Chess's constructor
+Xiang::Xiang(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
 bool Xiang::move(SC x, SC y, vector<Chess*> ar) //return TRUE if the movement is valid, otherwise return FALSE
 {
