@@ -290,7 +290,7 @@ int main()
 					{                  //iterate through the vector container
 						if ((*iter)->GetX() == x && (*iter)->GetY() == y)
 						{          //search for the chess at that position
-							NewDead = (*iter)->GetName();    //get the dead chess's name
+							NewDead = (*iter)->GetName();    //get the name of dead chess
 							BlackDeadChess.insert(NewDead);  //insert it into dead chesses
 							selected->displayAttack(**iter); //display and execute the attack command
 							delete *iter;                    //free the memory allocated
