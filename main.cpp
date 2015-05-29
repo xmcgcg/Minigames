@@ -91,7 +91,7 @@ int main()
 			Chess* RedLeftJu = new Ju('1', red1, "车", red);        //create these objects in heap
 			Chess* RedRightJu = new Ju('9', red1, "车", red);
 			Chess* BlackLeftJu = new Ju('1', black1, "車", black);  //use traditional Chinese characters
-			Chess* BlackRightJu = new Ju('9', black1, "車", black); //to diffentiate RED and BLACK 车/马
+			Chess* BlackRightJu = new Ju('9', black1, "車", black); //to differentiate RED and BLACK 车/马
 			
 			Chess* RedLeftMa = new Ma('2', red1, "马", red);
 			Chess* RedRightMa = new Ma('8', red1, "马", red);
