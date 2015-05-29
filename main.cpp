@@ -39,59 +39,59 @@ inline void input(SC& target)
 
 int main()
 {
-	vector<Chess*> chesses;
-	multiset<string> RedDeadChess, BlackDeadChess;
-	string NewDead;
+	vector<Chess*> chesses;                        //vector container storing pointers to Chess objects
+	multiset<string> RedDeadChess, BlackDeadChess; //these multiset containers store the names of dead chesses
+	string NewDead;                                //this represents the name of the new dead chess
 	color down;
 	SC replay = 'y';
-	while (replay == 'y')
+	while (replay == 'y')                          //the game cycle
 	{
-		SC choice;
+		SC choice;                             //this indicates the choice of player's side
 		cout << "Choose your color (R for red/B for black): ";
-		while (true)
+		while (true)                           //loop for inputting choice
 		{
 			input(choice);
 
 			switch (choice)
 			{
 			case 'r':
-				down = red;
+				down = red;            //enter R to make the bottom side RED
 				break;
 			case 'b':
-				down = black;
+				down = black;          //enter B to make the bottom side BLACK
 				break;
 			default:
 				cout << "Please enter either R or B: ";
-				continue;
+				continue;              //other choices are not accepted
 			}
 			cout << endl;
 			break;
 		}
 
-		SC red1, red3, red4;
-		SC black1, black3, black4;
-		if (down == red)
+		SC red1, red3, red4;                   //represents the 1st/3rd/4th row of the RED side respectively
+		SC black1, black3, black4;             //represents the 1st/3rd/4th row of the BLACK side respectively
+		if (down == red)                       //if RED is at the bottom
 		{
 			red1 = 'j';
 			red3 = 'h';
 			red4 = 'g';
 		}
-		else
+		else                                   //if BLACK is at the bottom
 		{
 			red1 = 'a';
 			red3 = 'c';
 			red4 = 'd';
 		}
-		black1 = static_cast<SC> (203 - red1);
+		black1 = static_cast<SC> (203 - red1); //if red1='j', black1='a', and vice versa
 		black3 = static_cast<SC> (203 - red3);
 		black4 = static_cast<SC> (203 - red4);
 
-		if (true)
+		if (true) //initializing Chess objects, the if statement is for the convenience to fold this part
 		{
-			Chess* RedLeftJu = new Ju('1', red1, "车", red);
+			Chess* RedLeftJu = new Ju('1', red1, "车", red);        //create these objects in heap
 			Chess* RedRightJu = new Ju('9', red1, "车", red);
-			Chess* BlackLeftJu = new Ju('1', black1, "車", black);
-			Chess* BlackRightJu = new Ju('9', black1, "車", black);
+			Chess* BlackLeftJu = new Ju('1', black1, "車", black);  //use traditional Chinese characters
+			Chess* BlackRightJu = new Ju('9', black1, "車", black); //to diffentiate RED and BLACK 车/马
 			
 			Chess* RedLeftMa = new Ma('2', red1, "马", red);
 			Chess* RedRightMa = new Ma('8', red1, "马", red);
@@ -127,7 +127,7 @@ int main()
 			Chess* Black4thZu = new BingZu('7', black4, "卒", black);
 			Chess* Black5thZu = new BingZu('9', black4, "卒", black);
 
-			chesses.emplace_back(RedShuai);
+			chesses.emplace_back(RedShuai);         //add these pointers to the vector container
 			chesses.emplace_back(BlackJiang);
 
 			chesses.emplace_back(RedLeftJu);
@@ -167,65 +167,64 @@ int main()
 			chesses.emplace_back(Black5thZu);
 		}
 
-		Chess* selected = nullptr;
-		bool found = false;
-		bool proceed = true;
-		display(chesses, RedDeadChess, BlackDeadChess);
+		Chess* selected = nullptr;           //"selected" represents the current selected chess
+		bool found = false;                  //"found" represents whether a chess is found during iteration
+		bool proceed = true;                 //"proceed" represents whether the current phase can be over
+		display(chesses, RedDeadChess, BlackDeadChess); //display the chess board
 
-		while (true)
+		while (true)                         //only GAME OVER can break this loop
 		{
-			SC x, y;
+			SC x, y;                     //X/Y coordinates
 
-			do
+			do                           //RED's turn
 			{
 				cout << "Red player, please enter the Y coordinate of the chess you want to move: ";
 				do
 				{
-					input(y);
-				} while (checkY(y));
+					input(y);    //input the Y-coordinate
+				} while (checkY(y)); //check whether it is out of bound
 
 				cout << "Red player, please enter the X coordinate of the chess you want to move: ";
 				do
 				{
-					input(x);
-				} while (checkX(x));
+					input(x);    //input the X-coordinate
+				} while (checkX(x)); //check whether it is out of bound
 
-				found = false;
-				for (auto ch : chesses)
+				found = false;       //no chess has been found yet
+				for (auto ch : chesses)           //search for any chess at this position
 				{
 					if (ch->compare(x, y))
 					{
-						if (ch->GetSide() == red)
+						if (ch->GetSide() == red) //if the chess is RED
 						{
-							selected = ch;
+							selected = ch;    //it is successfully selected
 							cout << "You have selected " << ch->GetName() << "." << endl << endl;
-							found = true;
-							proceed = true;
-							break;
+							found = true;     //set "found" to TRUE since a chess is found
+							proceed = true;   //set "proceed" to TRUE since this phase is over
+							break;            //break the search loop
 						}
-						else
+						else                      //if the chess is BLACK
 						{
 							cout << "You have selected an enemy chess, ";
 							cout << "please enter another set of coordinates." << endl << endl;
-							found = true;
-							proceed = false;
-							break;
+							found = true;     //a chess is found
+							proceed = false;  //but it's an enemy chess, cannot proceed
+							break;            //break the search loop
 						}
 					}
 				}
-				if (!found)
+				if (!found)                               //if no chess is found
 				{
 					cout << "It is empty here, ";
 					cout << "please enter another set of coordinates." << endl << endl;
-					proceed = false;
-					continue;
+					proceed = false;                  //cannot proceed
 				}
-			} while (!proceed);
+			} while (!proceed);                               //continue the loop if proceed=FALSE
 
-			do
+			do                            //now enter the coordinates of the destination
 			{
 				cout << "Red player, please enter the Y coordinate of the destination: ";
-				do
+				do                    //the same checking process
 				{
 					input(y);
 				} while (checkY(y));
@@ -236,82 +235,82 @@ int main()
 					input(x);
 				} while (checkX(x));
 
-				found = false;
-				for (auto ch : chesses)
+				found = false;        //reset "found" to FALSE
+				for (auto ch : chesses)           //search for any chess at this position
 				{
-					if (ch->compare(x, y))
+					if (ch->compare(x, y))    //if a chess is found
 					{
-						if (ch->GetSide() == red)
+						if (ch->GetSide() == red) //if a friendly chess is found
 						{
 							cout << "There is a chess of your own on that position, ";
 							cout << "please enter another set of coordinates." << endl << endl;
-							found = true;
-							proceed = false;
-							break;
+							found = true;     //a chess is found
+							proceed = false;  //you cannot attack your own chess
+							break;            //break the search loop
 						}
 						else
 						{
-							found = true;
+							found = true;     //if an enemy chess is found
 							proceed = selected->JS_DoNotMeet(x, y, chesses);
-							if (!proceed)
+							if (!proceed)     //if 帅 and 将 will meet each other
 							{
 								cout << "Jiang and Shuai will meet each other if you move, ";
 								cout << "please enter another set of coordinates." << endl << endl;
 							}
-							else
+							else              //call the attack function to check validity
 								proceed = selected->attack(x, y, chesses);
 							break;
 						}
 					}
 				}
 
-				if (!found)
-				{
+				if (!found)                //if no chess is found
+				{                          //check whether the chess can move to that position
 					proceed = selected->move(x, y, chesses);
-					if (proceed)
+					if (proceed)       //if the chess can move to there
 						proceed = selected->JS_DoNotMeet(x, y, chesses);
-					else
+					else               //if the move is invalid, enter another set of coordinates
 					{
 						cout << "Unable to move to that position, ";
 						cout << "Please enter another set of coordinates." << endl << endl;
-						continue;
+						continue;  //go to the beginning of this do-while loop
 					}
 
-					if (proceed)
-						selected->displayMove(x, y);
-					else
+					if (proceed)       //if 帅 and 将 will not meet each other
+						selected->displayMove(x, y); //display and execute the move command
+					else               //otherwise another set of coordinates has to be entered
 					{
 						cout << "Jiang and Shuai will meet each other if you move, ";
 						cout << "please enter another set of coordinates." << endl << endl;
 					}
 				}
-				else if (found && proceed)
+				else if (found && proceed) //if the attack is successful
 				{
 					for (auto iter = chesses.begin(); iter != chesses.end(); iter++)
-					{
+					{                  //iterate through the vector container
 						if ((*iter)->GetX() == x && (*iter)->GetY() == y)
-						{
-							NewDead = (*iter)->GetName();
-							BlackDeadChess.insert(NewDead);
-							selected->displayAttack(**iter);
-							delete *iter;
-							*iter = nullptr;
-							chesses.erase(iter);
-							break;
+						{          //search for the chess at that position
+							NewDead = (*iter)->GetName();    //get the dead chess's name
+							BlackDeadChess.insert(NewDead);  //insert it into dead chesses
+							selected->displayAttack(**iter); //display and execute the attack command
+							delete *iter;                    //free the memory allocated
+							*iter = nullptr;                 //set the pointer value to nullptr
+							chesses.erase(iter);             //delete this pointer from the container
+							break;                           //break the search loop
 						}
 					}
 				}
-			} while (!proceed);
+			} while (!proceed);                             //continue the loop if proceed=FALSE
 
-			selected = nullptr;
-			display(chesses, RedDeadChess, BlackDeadChess);
-			if (NewDead == "将")
+			selected = nullptr;                             //RED's turn is over, no chess is selected
+			display(chesses, RedDeadChess, BlackDeadChess); //display the chess board after RED's turn
+			if (NewDead == "将")                            //if 将 is eaten
 			{
 				cout << "Game over. Red wins.\a" << endl << endl;
-				break;
+				break;                                  //GAME OVER, break the loop
 			}
 
-			do
+			do                                              //now it is BLACK's turn, similar to RED's turn
 			{
 				cout << "Black player, please enter the y coordinate of the chess you want to move: ";
 				do
@@ -438,17 +437,17 @@ int main()
 				}
 			} while (!proceed);
 
-			selected = nullptr;
-			display(chesses, RedDeadChess, BlackDeadChess);
-			if (NewDead == "帅")
+			selected = nullptr;                             //BLACK's turn is over, no chess is selected
+			display(chesses, RedDeadChess, BlackDeadChess); //display the chess board again
+			if (NewDead == "帅")                            //if 帅 is eaten
 			{
 				cout << "Game over. Black wins.\a" << endl << endl;
-				break;
+				break;                                  //GAME OVER, break the loop
 			}
-		}
+		}                                                       //otherwise another RED's turn begins
 		
-		cout << "Replay?(Enter Y to replay): ";
+		cout << "Replay?(Enter Y to replay): ";                 //enter Y/y to replay
 		input(replay);
 	}
-	return 0;
+	return 0;                                                       //otherwise quit the program
 }
