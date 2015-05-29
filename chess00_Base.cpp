@@ -16,12 +16,12 @@ Chess::Chess(SC x, SC y, const string& nm, color cl)      //Constructor with 4 p
 bool Chess::check(SC x, SC y)                            //check whether the coordinates are within the chess board
 {                                                        //returns FALSE if the coordinates are out of bound
 	bool inbound = true;
-	if (x < '1' || x > '9')                          //X-coordinate is between 1 and 9 (inclusive)
+	if (x < '1' || x > '9')                          //X-coordinate should be between 1 and 9 (inclusive)
 	{
 		cout << "X-coordinate is out of bound." << endl;
 		inbound = false;
 	}
-	if (y < 'a' || y > 'j')                          //Y-coordinate is between a and j (inclusive)
+	if (y < 'a' || y > 'j')                          //Y-coordinate should be between a and j (inclusive)
 	{
 		cout << "Y-coordinate is out of bound." << endl;
 		inbound = false;
@@ -121,8 +121,8 @@ void Chess::displayMove(SC x, SC y)                  //display and execute movem
 
 void Chess::displayAttack(Chess& ch)                     //display and execute attacking if it is valid
 {
-	Xcoord = ch.Xcoord;                              //change the X-coordinate to enemy chess's X-coordinate
-	Ycoord = ch.Ycoord;                              //change the Y-coordinate to enemy chess's Y-coordinate
+	Xcoord = ch.Xcoord;                              //change the X-coordinate to the X-coordinate of enemy chess
+	Ycoord = ch.Ycoord;                              //change the Y-coordinate to the Y-coordinate of enemy chess
 	SC tempY = toupper(Ycoord);                      //create a local variable in Y-coordinate's upper case form
 	cout << name << " has moved to coordinate " << tempY << ch.Xcoord;
 	cout << " and eats " << ch.name << endl << endl; //display the attacking information
