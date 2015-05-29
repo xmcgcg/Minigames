@@ -88,7 +88,7 @@ int main()
 
 		if (true) //initializing Chess objects, the if statement is for the convenience to fold this part
 		{
-			Chess* RedLeftJu = new Ju('1', red1, "车", red);        //create these objects in heap
+			Chess* RedLeftJu = new Ju('1', red1, "车", red);        //create these objects on heap
 			Chess* RedRightJu = new Ju('9', red1, "车", red);
 			Chess* BlackLeftJu = new Ju('1', black1, "車", black);  //use traditional Chinese characters
 			Chess* BlackRightJu = new Ju('9', black1, "車", black); //to differentiate RED and BLACK 车/马
