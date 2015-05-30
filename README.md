@@ -3,8 +3,11 @@ ver 1.0.150530: First version of Chinese chess
 Known problems and possible improvements
 ----------------------------------------------------------------------------------------
 · Once a chess is selected, players cannot deselect this chess even though it cannot perform any move.
+
 · Players have to enter X/Y coordinates seperately.
+
 · Players cannot surrender.
+
 · The player may stuck when not of his/her remaining chesses can move, the system should anncounce his/her failure.
 
 Game rules
