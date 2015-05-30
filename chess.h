@@ -20,7 +20,7 @@ public:
 	Chess() = default;                               //use default constructor
 	Chess(SC, SC, const string&, color);             //constructor with 4 parameters
 
-	color GetSide() { return side; }                 //functions returning private members
+	color GetSide() { return side; }                 //functions returning protected members
 	string GetName() { return name; }
 	SC GetX() { return Xcoord; }
 	SC GetY() { return Ycoord; }
