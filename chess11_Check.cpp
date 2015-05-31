@@ -2,6 +2,7 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+using namespace CG;
 
 bool checkX(SC x)                 //check whether the X-coordinate input is valid
 {
