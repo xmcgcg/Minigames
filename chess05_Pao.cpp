@@ -1,10 +1,11 @@
 #include "chess.h"
+using namespace CG;
 
 Pao::Pao(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Pao::move(SC x, SC y, vector<Chess*> ar)            //return TRUE is moving to (x,y) is valid, otherwise return FALSE
+bool Pao::move(SC x, SC y, vector<Chess*> ar)            //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {                                                        //炮/砲's moving method is the same as 车's
-	if (x != Xcoord && y != Ycoord)
+	if (x != Xcoord && y != Ycoord)                  //therefore Pao::move is equivalant to Ju::move
 		return false;
 	if (x == Xcoord && y != Ycoord)
 	{
@@ -39,7 +40,7 @@ bool Pao::move(SC x, SC y, vector<Chess*> ar)            //return TRUE is moving
 	return true;
 }
 
-bool Pao::attack(SC x, SC y, vector<Chess*> ar)          //return TRUE is the attack is valid, otherwise return FALSE
+bool Pao::attack(SC x, SC y, vector<Chess*> ar)          //return TRUE if the attack is valid, otherwise return FALSE
 {                                                        //炮/砲 is the only kind of chess with a unique attacking method
 	bool found = false;                              //found indicates whether a chess is found between 炮/砲 and target
 
@@ -110,5 +111,5 @@ bool Pao::attack(SC x, SC y, vector<Chess*> ar)          //return TRUE is the at
 		}
 	}
 
-	return true;                                     //if only one chess is found in between return TRUE
+	return true;                                     //if only one chess is found in between, return TRUE
 }
