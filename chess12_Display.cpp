@@ -4,6 +4,7 @@
 using std::cout;
 using std::endl;
 using std::multiset;
+using namespace CG;
 
 //if no chess takes the position (x,y), a tabular character will be displayed
 string tabchar(SC x, SC y)             //returns a tabular character
@@ -43,7 +44,6 @@ string tabchar(SC x, SC y)             //returns a tabular character
 			return "┼";    //display ┼ for other coordinates
 		}
 	}
-
 }
 
 //display the chess board, rd/bd represent the eaten chesses for the red/black side
@@ -51,7 +51,7 @@ void display(vector<Chess*> ar, multiset<string> rd, multiset<string> bd)
 {
 	string checker[10][9];    //create a 2D array (10 rows, 9 columns)
 	int i, j;                 //i/j are used for the FOR loop
-	SC x, y;                  //x/y represents the corresponding coordinates for i/j
+	SC x, y;                  //x/y represents the corresponding coordinates of i/j
 	for (i = 0; i < 10; i++)  //row number = i+1
 	{
 		y = static_cast<SC> (i + 97);           //if i=0, y='a'; if i=9, y='j'
