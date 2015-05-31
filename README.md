@@ -1,4 +1,4 @@
-ver 1.0.150530: First version of Chinese chess
+Current version: 1.1.150531
 
 Known problems and possible improvements
 ----------------------------------------------------------------------------------------
