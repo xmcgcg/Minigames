@@ -2,7 +2,13 @@
 #include <iostream>
 #include <cctype>
 #include <set>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::isupper;
+using std::tolower;
+using std::multiset;
+using namespace CG;
 
 //function prototypes
 string tabchar(SC, SC);
@@ -257,8 +263,6 @@ int main()
 								cout << "Jiang and Shuai will meet each other if you move, ";
 								cout << "please enter another set of coordinates." << endl << endl;
 							}
-							else              //call the attack function to check validity
-								proceed = selected->attack(x, y, chesses);
 							break;
 						}
 					}
@@ -284,20 +288,29 @@ int main()
 						cout << "please enter another set of coordinates." << endl << endl;
 					}
 				}
-				else if (found && proceed) //if the attack is successful
+				else if (found && proceed) //if 帅 and 将 will not meet each other after attack
 				{
-					for (auto iter = chesses.begin(); iter != chesses.end(); iter++)
+					proceed = selected->attack(x, y, chesses); //call the attack function to check validity
+					if (proceed)       //if the attack is valid
 					{                  //iterate through the vector container
-						if ((*iter)->GetX() == x && (*iter)->GetY() == y)
+						for (auto iter = chesses.begin(); iter != chesses.end(); iter++)
 						{          //search for the chess at that position
-							NewDead = (*iter)->GetName();    //get the name of dead chess
-							BlackDeadChess.insert(NewDead);  //insert it into dead chesses
-							selected->displayAttack(**iter); //display and execute the attack command
-							delete *iter;                    //free the memory allocated
-							*iter = nullptr;                 //set the pointer value to nullptr
-							chesses.erase(iter);             //delete this pointer from the container
-							break;                           //break the search loop
+							if ((*iter)->GetX() == x && (*iter)->GetY() == y)
+							{
+								NewDead = (*iter)->GetName();    //get the name of dead chess
+								BlackDeadChess.insert(NewDead);  //insert it into dead chesses
+								selected->displayAttack(**iter); //display and execute the attack command
+								delete *iter;                    //free the memory allocated
+								*iter = nullptr;                 //set the pointer value to nullptr
+								chesses.erase(iter);             //delete this pointer from the container
+								break;                           //break the search loop
+							}
 						}
+					}
+					else               //if the attack is invalid
+					{                  //display information and continue the loop
+						cout << "Unable to attack the chess at that position, ";
+						cout << "please enter another set of coordinates." << endl << endl;
 					}
 				}
 			} while (!proceed);                             //continue the loop if proceed=FALSE
@@ -392,8 +405,6 @@ int main()
 								cout << "Jiang and Shuai will meet each other if you move, ";
 								cout << "please enter another set of coordinates." << endl << endl;
 							}
-							else
-								proceed = selected->attack(x, y, chesses);
 							break;
 						}
 					}
@@ -421,18 +432,27 @@ int main()
 				}
 				else if (found && proceed)
 				{
-					for (auto iter = chesses.begin(); iter != chesses.end(); iter++)
+					proceed = selected->attack(x, y, chesses);
+					if (proceed)
 					{
-						if ((*iter)->GetX() == x && (*iter)->GetY() == y)
+						for (auto iter = chesses.begin(); iter != chesses.end(); iter++)
 						{
-							NewDead = (*iter)->GetName();
-							RedDeadChess.insert(NewDead);
-							selected->displayAttack(**iter);
-							delete *iter;
-							*iter = nullptr;
-							chesses.erase(iter);
-							break;
+							if ((*iter)->GetX() == x && (*iter)->GetY() == y)
+							{
+								NewDead = (*iter)->GetName();
+								RedDeadChess.insert(NewDead);
+								selected->displayAttack(**iter);
+								delete *iter;
+								*iter = nullptr;
+								chesses.erase(iter);
+								break;
+							}
 						}
+					}
+					else
+					{
+						cout << "Unable to attack the chess at that position, ";
+						cout << "please enter another set of coordinates." << endl << endl;
 					}
 				}
 			} while (!proceed);
