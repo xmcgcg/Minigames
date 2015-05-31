@@ -8,7 +8,7 @@ Known problems and possible improvements
 
 · Players cannot surrender.
 
-· The player may stuck when not of his/her remaining chesses can move, the system should anncounce his/her failure.
+· The player may stuck when none of his/her remaining chesses can move, the system should anncounce his/her failure for such a case.
 
 Game rules
 ----------------------------------------------------------------------------------------
