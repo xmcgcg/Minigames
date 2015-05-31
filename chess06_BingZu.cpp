@@ -1,6 +1,7 @@
 #include "chess.h"
 #include <cstdlib>
 using std::abs;
+using namespace CG;
 
 BingZu::BingZu(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
@@ -22,23 +23,23 @@ bool BingZu::move(SC x, SC y, vector<Chess*> ar)   //return TRUE if moving to (x
 	int Xdif = abs(x - Xcoord);                //Xdif represents the number of columns to the destination
 
 	if ((down == black && side == black) || (down == red && side == red))
-	{                                          //if 兵/卒 is placed on row G at the beginning
-		if (Ycoord < 'f' && Xdif == 1)     //if 兵/卒 has crossed the river and move to the left and right
-			return true;               //the move is valid, return TRUE
-		else if (y < Ycoord && Xdif == 0)  //if 兵/卒 moves up
-			return true;               //the move is also valid, return TRUE
+	{                                              //if 兵/卒 is placed on row G at the beginning
+		if (Ycoord < 'f' && Xdif == 1)         //if 兵/卒 has crossed the river and move to the left and right
+			return true;                   //the move is valid, return TRUE
+		else if (Ycoord - y == 1 && Xdif == 0) //if 兵/卒 moves up
+			return true;                   //the move is also valid, return TRUE
 		else
-			return false;              //otherwise return FALSE
+			return false;                  //otherwise return FALSE
 	}
 
-	else                                       //if 兵/卒 is placed on row D at the beginning
+	else                                           //if 兵/卒 is placed on row D at the beginning
 	{
-		if (Ycoord > 'f' && Xdif == 1)     //if 兵/卒 has crossed the river and move to the left and right
-			return true;               //the move is valid, return TRUE
-		else if (y > Ycoord && Xdif == 0)  //if 兵/卒 moves down
-			return true;               //the move is also valid, return TRUE
+		if (Ycoord > 'e' && Xdif == 1)         //if 兵/卒 has crossed the river and move to the left and right
+			return true;                   //the move is valid, return TRUE
+		else if (y - Ycoord == 1 && Xdif == 0) //if 兵/卒 moves down
+			return true;                   //the move is also valid, return TRUE
 		else
-			return false;              //otherwise return FALSE
+			return false;                  //otherwise return FALSE
 	}
 }
 
