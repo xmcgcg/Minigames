@@ -1,6 +1,7 @@
 #include "chess.h"
 #include <cstdlib>
 using std::abs;
+using namespace CG;
 
 Xiang::Xiang(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
