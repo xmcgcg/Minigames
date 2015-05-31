@@ -20,14 +20,14 @@ public:
 	Chess() = default;                               //use default constructor
 	Chess(SC, SC, const string&, color);             //constructor with 4 parameters
 
-	color GetSide() { return side; }                 //functions returning protected members
-	string GetName() { return name; }
-	SC GetX() { return Xcoord; }
-	SC GetY() { return Ycoord; }
+	color GetSide() const { return side; }           //functions returning protected members
+	string GetName() const { return name; }
+	SC GetX() const { return Xcoord; }
+	SC GetY() const { return Ycoord; }
 
-	bool check(SC, SC);                              //check whether the set of coordinates are out of board
-	bool compare(SC, SC);                            //check whether there is a chess on this position
-	bool JS_DoNotMeet(SC, SC, vector<Chess*>);       //chech whether 将 and 帅 will meet each other
+	bool check(SC, SC) const;                        //check whether the set of coordinates are out of board
+	bool compare(SC, SC) const;                      //check whether there is a chess on this position
+	bool JS_DoNotMeet(SC, SC, vector<Chess*>) const; //chech whether 将 and 帅 will meet each other
 
 	virtual bool move(SC, SC, vector<Chess*>) = 0;   //check whether the chess can move to this position
 	virtual bool attack(SC, SC, vector<Chess*>) = 0; //check whether the chess can attack enemy chess at this pos
