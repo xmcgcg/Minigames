@@ -4,8 +4,9 @@
 using std::cout;
 using std::endl;
 using std::toupper;
+using namespace CG;
 
-Chess::Chess(SC x, SC y, const string& nm, color cl)      //Constructor with 4 parameters
+Chess::Chess(SC x, SC y, const string& nm, color cl)     //Constructor with 4 parameters
 {
 	Xcoord = x;
 	Ycoord = y;
@@ -13,7 +14,7 @@ Chess::Chess(SC x, SC y, const string& nm, color cl)      //Constructor with 4 p
 	side = cl;
 }
 
-bool Chess::check(SC x, SC y)                            //check whether the coordinates are within the chess board
+bool Chess::check(SC x, SC y) const                      //check whether the coordinates are within the chess board
 {                                                        //returns FALSE if the coordinates are out of bound
 	bool inbound = true;
 	if (x < '1' || x > '9')                          //X-coordinate should be between 1 and 9 (inclusive)
@@ -29,7 +30,7 @@ bool Chess::check(SC x, SC y)                            //check whether the coo
 	return inbound;
 }
 
-bool Chess::compare(SC x, SC y)                          //check whether there is a chess at (x, y)
+bool Chess::compare(SC x, SC y) const                    //check whether there is a chess at (x, y)
 {
 	if (Xcoord == x && Ycoord == y)
 		return true;
@@ -37,11 +38,11 @@ bool Chess::compare(SC x, SC y)                          //check whether there i
 		return false;
 }
 
-bool Chess::JS_DoNotMeet(SC x, SC y, vector<Chess*> ar)  //check whether 帅 and 将 will meet each other after the move
-{                                                        //returns TRUE if they do not meet, otherwise returns FALSE
-	if (name == "帅")                                //if the chess itself is 帅
+bool Chess::JS_DoNotMeet(SC x, SC y, vector<Chess*> ar) const //check whether 帅 and 将 will meet each other
+{                                                             //return TRUE if they do not meet, otherwise return FALSE
+	if (name == "帅")                                     //if the chess itself is 帅
 	{
-		for (auto jiang : ar)                    //iterate through the container of pointers
+		for (auto jiang : ar)                         //iterate through the container of pointers
 		{
 			if (jiang->GetName() == "将" && jiang->GetX() == x) //if 将 is at the same column as 帅
 			{
@@ -107,7 +108,7 @@ bool Chess::JS_DoNotMeet(SC x, SC y, vector<Chess*> ar)  //check whether 帅 and
 			}
 		}
 	}
-	return true;                                     //this return statement is just for WARNINGS not to appear
+	return true;                                 //this return statement is just for WARNING not to appear
 }
 
 void Chess::displayMove(SC x, SC y)                  //display and execute movement if it is valid
