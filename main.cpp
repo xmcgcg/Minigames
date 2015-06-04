@@ -466,6 +466,13 @@ int main()
 			}
 		}                                                       //otherwise another RED's turn begins
 		
+		for (auto iter = chesses.begin(); iter != chesses.end(); iter++)
+		{
+			delete *iter;                                   //free the memory of the undead chesses
+			*iter = nullptr;                                //set the members' value as nullptr
+		}
+		chesses.clear();                                        //clear the vector container
+		
 		cout << "Replay?(Enter Y to replay): ";                 //enter Y/y to replay
 		input(replay);
 	}
