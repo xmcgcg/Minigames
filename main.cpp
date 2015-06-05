@@ -466,7 +466,7 @@ int main()
 			}
 		}                                                       //otherwise another RED's turn begins
 		
-		for (auto ch : chesses)
+		for (auto& ch : chesses)
 		{
 			delete ch;                                      //free the memory of the undead chesses
 			ch = nullptr;                                   //set the members' value as nullptr
