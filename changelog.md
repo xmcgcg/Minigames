@@ -1,3 +1,7 @@
+ver 1.3.150605
+--------------------------------------------------------------
+· Fixed a bug where the dead chesses of the last game are still displayed in a new game
+
 ver 1.2.150604
 --------------------------------------------------------------
 · Fixed a bug which causes players cannot replay the game
