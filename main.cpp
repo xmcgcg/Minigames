@@ -325,7 +325,7 @@ int main()
 
 			do                                              //now it is BLACK's turn, similar to RED's turn
 			{
-				cout << "Black player, please enter the y coordinate of the chess you want to move: ";
+				cout << "Black player, please enter the Y coordinate of the chess you want to move: ";
 				do
 				{
 					input(y);
@@ -466,10 +466,10 @@ int main()
 			}
 		}                                                       //otherwise another RED's turn begins
 		
-		for (auto iter = chesses.begin(); iter != chesses.end(); iter++)
+		for (auto ch : chesses)
 		{
-			delete *iter;                                   //free the memory of the undead chesses
-			*iter = nullptr;                                //set the members' value as nullptr
+			delete ch;                                      //free the memory of the undead chesses
+			ch = nullptr;                                   //set the members' value as nullptr
 		}
 		chesses.clear();                                        //clear the vector container
 		
