@@ -472,6 +472,9 @@ int main()
 			ch = nullptr;                                   //set the members' value as nullptr
 		}
 		chesses.clear();                                        //clear the vector container
+		RedDeadChess.clear();                                   //clear the two multiset containers
+		BlackDeadChess.clear();
+		NewDead.clear();                                        //set newDead to an empty string
 		
 		cout << "Replay?(Enter Y to replay): ";                 //enter Y/y to replay
 		input(replay);
