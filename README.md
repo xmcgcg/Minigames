@@ -1,4 +1,4 @@
-Current version: 1.2.150604
+Current version: 1.3.150605
 
 Known problems and possible improvements
 ----------------------------------------------------------------------------------------
