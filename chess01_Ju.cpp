@@ -3,7 +3,7 @@ using namespace CG;
 
 Ju::Ju(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Ju::move(SC x, SC y, vector<Chess*> ar)              //return TRUE if moving to (x,y) is valid, otherwise return FALSE
+bool Ju::move(SC x, SC y, const vector<Chess*>& ar)       //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {
 	if (x != Xcoord && y != Ycoord)                   //车 has to move horizontally or vertically
 		return false;
@@ -41,7 +41,7 @@ bool Ju::move(SC x, SC y, vector<Chess*> ar)              //return TRUE if movin
 	return true;                                      //since no chess is found in between, return TRUE
 }
 
-bool Ju::attack(SC x, SC y, vector<Chess*> ar)            //the moving method and the attacking method of 车 are the same
+bool Ju::attack(SC x, SC y, const vector<Chess*>& ar)     //the moving method and the attacking method of 车 are the same
 {
 	return move(x, y, ar);                            //therefore call the move function here
 }
