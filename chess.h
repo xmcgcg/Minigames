@@ -29,10 +29,10 @@ namespace CG
 
 		bool check(SC, SC) const;                        //check whether the set of coordinates are out of board
 		bool compare(SC, SC) const;                      //check whether there is a chess at this position
-		bool JS_DoNotMeet(SC, SC, vector<Chess*>) const; //chech whether 帅 and 将 will meet each other
+		bool JS_DoNotMeet(SC, SC, const vector<Chess*>&) const; //check whether 帅 and 将 will meet each other
 
-		virtual bool move(SC, SC, vector<Chess*>) = 0;   //check whether the chess can move to this position
-		virtual bool attack(SC, SC, vector<Chess*>) = 0; //check whether the chess can attack an enemy chess at this position
+		virtual bool move(SC, SC, const vector<Chess*>&) = 0;   //check whether the chess can move to a position
+		virtual bool attack(SC, SC, const vector<Chess*>&) = 0; //check whether the chess can attack an enemy chess
 		void displayMove(SC, SC);                        //display and execute the move if moving is valid
 		void displayAttack(Chess&);                      //display and execute the attack if attacking is valid
 
@@ -45,8 +45,8 @@ namespace CG
 		Ju() = default;                              //default constructor
 		Ju(SC, SC, const string&, color);            //constructor with 4 parameters
 
-		bool move(SC, SC, vector<Chess*>);           //specific move function for 车
-		bool attack(SC, SC, vector<Chess*>);         //specific attack function for 车
+		bool move(SC, SC, const vector<Chess*>&);    //specific move function for 车
+		bool attack(SC, SC, const vector<Chess*>&);  //specific attack function for 车
 
 		~Ju() = default;                             //virtual default destructor
 	};
@@ -57,8 +57,8 @@ namespace CG
 		Ma() = default;
 		Ma(SC, SC, const string&, color);
 
-		bool move(SC, SC, vector<Chess*>);
-		bool attack(SC, SC, vector<Chess*>);
+		bool move(SC, SC, const vector<Chess*>&);
+		bool attack(SC, SC, const vector<Chess*>&);
 
 		~Ma() = default;
 	};
@@ -69,8 +69,8 @@ namespace CG
 		Xiang() = default;
 		Xiang(SC, SC, const string&, color);
 
-		bool move(SC, SC, vector<Chess*>);
-		bool attack(SC, SC, vector<Chess*>);
+		bool move(SC, SC, const vector<Chess*>&);
+		bool attack(SC, SC, const vector<Chess*>&);
 
 		~Xiang() = default;
 	};
@@ -81,8 +81,8 @@ namespace CG
 		Shi() = default;
 		Shi(SC, SC, const string&, color);
 
-		bool move(SC, SC, vector<Chess*>);
-		bool attack(SC, SC, vector<Chess*>);
+		bool move(SC, SC, const vector<Chess*>&);
+		bool attack(SC, SC, const vector<Chess*>&);
 
 		~Shi() = default;
 	};
@@ -93,8 +93,8 @@ namespace CG
 		Pao() = default;
 		Pao(SC, SC, const string&, color);
 
-		bool move(SC, SC, vector<Chess*>);
-		bool attack(SC, SC, vector<Chess*>);
+		bool move(SC, SC, const vector<Chess*>&);
+		bool attack(SC, SC, const vector<Chess*>&);
 
 		~Pao() = default;
 	};
@@ -105,8 +105,8 @@ namespace CG
 		BingZu() = default;
 		BingZu(SC, SC, const string&, color);
 
-		bool move(SC, SC, vector<Chess*>);
-		bool attack(SC, SC, vector<Chess*>);
+		bool move(SC, SC, const vector<Chess*>&);
+		bool attack(SC, SC, const vector<Chess*>&);
 
 		~BingZu() = default;
 	};
@@ -117,8 +117,8 @@ namespace CG
 		JiangShuai() = default;
 		JiangShuai(SC, SC, const string&, color);
 
-		bool move(SC, SC, vector<Chess*>);
-		bool attack(SC, SC, vector<Chess*>);
+		bool move(SC, SC, const vector<Chess*>&);
+		bool attack(SC, SC, const vector<Chess*>&);
 
 		~JiangShuai() = default;
 	};
