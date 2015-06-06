@@ -47,7 +47,7 @@ string tabchar(SC x, SC y)             //returns a tabular character
 }
 
 //display the chess board, rd/bd represent the eaten chesses for the red/black side
-void display(vector<Chess*> ar, multiset<string> rd, multiset<string> bd)
+void display(const vector<Chess*>& ar, const multiset<string>& rd, const multiset<string>& bd)
 {
 	string checker[10][9];    //create a 2D array (10 rows, 9 columns)
 	int i, j;                 //i/j are used for the FOR loop
