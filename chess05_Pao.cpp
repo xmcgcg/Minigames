@@ -3,7 +3,7 @@ using namespace CG;
 
 Pao::Pao(SC x, SC y, const string& nm, color cl): Chess(x, y, nm, cl) {} //use Chess's constructor
 
-bool Pao::move(SC x, SC y, vector<Chess*> ar)            //return TRUE if moving to (x,y) is valid, otherwise return FALSE
+bool Pao::move(SC x, SC y, const vector<Chess*>& ar)     //return TRUE if moving to (x,y) is valid, otherwise return FALSE
 {                                                        //炮/砲's moving method is the same as 车's
 	if (x != Xcoord && y != Ycoord)                  //therefore Pao::move is equivalant to Ju::move
 		return false;
@@ -40,7 +40,7 @@ bool Pao::move(SC x, SC y, vector<Chess*> ar)            //return TRUE if moving
 	return true;
 }
 
-bool Pao::attack(SC x, SC y, vector<Chess*> ar)          //return TRUE if the attack is valid, otherwise return FALSE
+bool Pao::attack(SC x, SC y, const vector<Chess*>& ar)   //return TRUE if the attack is valid, otherwise return FALSE
 {                                                        //炮/砲 is the only kind of chess with a unique attacking method
 	bool found = false;                              //found indicates whether a chess is found between 炮/砲 and target
 
