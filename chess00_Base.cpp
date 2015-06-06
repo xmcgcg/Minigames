@@ -38,7 +38,7 @@ bool Chess::compare(SC x, SC y) const                    //check whether there i
 		return false;
 }
 
-bool Chess::JS_DoNotMeet(SC x, SC y, vector<Chess*> ar) const //check whether 帅 and 将 will meet each other
+bool Chess::JS_DoNotMeet(SC x, SC y, const vector<Chess*>& ar) const        //check whether 帅 and 将 will meet each other
 {                                                             //return TRUE if they do not meet, otherwise return FALSE
 	if (name == "帅")                                     //if the chess itself is 帅
 	{
@@ -49,9 +49,9 @@ bool Chess::JS_DoNotMeet(SC x, SC y, vector<Chess*> ar) const //check whether �
 				SC Yjiang = jiang->GetY();                  //get 将's Y-coordinate
 				SC min = Ycoord < Yjiang ? Ycoord : Yjiang; //min represents the lower Y-coordinate
 				SC max = Ycoord > Yjiang ? Ycoord : Yjiang; //max represents the higher Y-coordinate
-				min++;                                      //+1 to min since the search range is not inclusive for the ends
-				for (; min < max; min++)                    //check every position between 帅 and 将
-					for (auto ch : ar)                  //iterate through the container again
+				min++;                        //+1 to min since the search range is not inclusive for the ends
+				for (; min < max; min++)      //check every position between 帅 and 将
+					for (auto ch : ar)    //iterate through the container again
 						if (ch->compare(x, min))    //if there is one other chess in between
 							return true;        //return TRUE as 帅 and 将 do not meet each other
 				return false;                               //if no chess is found in between, return FALSE
