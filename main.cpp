@@ -12,7 +12,7 @@ using namespace CG;
 
 //function prototypes
 string tabchar(SC, SC);
-void display(vector<Chess*>, multiset<string>, multiset<string>);
+void display(const vector<Chess*>&, const multiset<string>&, const multiset<string>&);
 bool checkX(SC);
 bool checkY(SC);
 
