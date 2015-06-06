@@ -1,3 +1,7 @@
+ver 1.4.150606
+--------------------------------------------------------------
+· Now running the Chinese chess program requires much less memory
+
 ver 1.3.150605
 --------------------------------------------------------------
 · Fixed a bug where the dead chesses of the last game are still displayed in a new game
